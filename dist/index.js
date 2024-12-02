@@ -1,0 +1,28 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const Reader_1 = __importDefault(require("./model/Reader"));
+const Author_1 = __importDefault(require("./model/Author"));
+const Book_1 = __importDefault(require("./model/Book"));
+const Book_2 = require("./model/Book");
+const Loan_1 = __importDefault(require("./model/Loan"));
+const Gender_1 = require("./model/Gender");
+let readerTest = new Reader_1.default("Alice", 25, "123 street");
+console.log(readerTest.getName());
+console.log(readerTest.getAge());
+console.log(readerTest.getTelephone());
+console.log(readerTest.getAddress());
+let reader2 = new Reader_1.default("Bob", 30, "Rua quinze", 123456789, "bob@mail.com");
+console.log(reader2.getEmail());
+let author1 = new Author_1.default("J.K. Rowling", "British");
+let author2 = new Author_1.default("George Orwell", "British");
+let book1 = new Book_1.default("Harry Potter and the Sorcerer's Stone", Gender_1.Gender.FICTION, author1, 1997);
+let book2 = new Book_2.Donations("1984", Gender_1.Gender.FICTION, author2, 1949);
+let reader1 = new Reader_1.default("Alice", 30, "Rua Nova", 123456789, "alice@email.com");
+let loan1 = new Loan_1.default(reader1, book1, new Date("2024-11-20"));
+console.log(`${reader1.getName()} borrowed the book "${book1.getTitle()}" by ${book1.getAuthor().getName()} (${book1.getYear()}).`);
+console.log(`Loan Date: ${loan1.getLoanDate().toDateString()}`);
+console.log(loan1.message());
+console.log(`Doações Book Title: ${book2.getTitle()}`);

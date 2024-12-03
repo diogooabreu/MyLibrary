@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StudentLoan = void 0;
 class Loan {
     constructor(reader, book, loanDate, returnDate) {
         this.reader = reader;
@@ -21,3 +22,17 @@ class Loan {
     }
 }
 exports.default = Loan;
+class StudentLoan extends Loan {
+    constructor(reader, book, loanDate) {
+        super(reader, book, loanDate);
+    }
+    calculateReturnDate() {
+        const returnDate = new Date(this.getLoanDate());
+        returnDate.setDate(returnDate.getDate() + 7);
+        return returnDate;
+    }
+    message() {
+        return "Your loan expires in 7 days. Please return the book on time!";
+    }
+}
+exports.StudentLoan = StudentLoan;

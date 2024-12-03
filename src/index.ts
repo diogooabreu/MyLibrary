@@ -2,8 +2,9 @@ import Reader from "./model/Reader";
 import Author from "./model/Author";
 import Book from "./model/Book";
 import { Donations } from "./model/Book";
-import Loan from "./model/Loan";
+import Loan, { StudentLoan } from "./model/Loan";
 import { Gender } from "./model/Gender";
+import Magazine from "./model/Magazine";
 
 let readerTest = new Reader("Alice", 25, "123 street");
 console.log(readerTest.getName());    
@@ -24,8 +25,16 @@ let reader1 = new Reader("Alice", 30, "Rua Nova", 123456789, "alice@email.com");
 
 let loan1 = new Loan(reader1, book1, new Date("2024-11-20"));
 
+let magazine1 = new Magazine("Super Interessante");
+
+const loanDate = new Date();
+let studentLoan1 = new StudentLoan(reader2, book2, loanDate);
+
 console.log(`${reader1.getName()} borrowed the book "${book1.getTitle()}" by ${book1.getAuthor().getName()} (${book1.getYear()}).`);
 console.log(`Loan Date: ${loan1.getLoanDate().toDateString()}`);
 console.log(loan1.message());
 
-console.log(`Doações Book Title: ${book2.getTitle()}`);
+console.log(`Donated books: ${book2.getTitle()}, ${book2.getGender()}`);
+console.log(`The first magazine in our collection was ${magazine1.getTitle()}`);
+console.log(magazine1.id);
+console.log(studentLoan1.message());

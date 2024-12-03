@@ -30,3 +30,19 @@ export default class Loan {
         return "Your loan expires in 7 days. Happy reading!!"
     }
 }
+
+export class StudentLoan extends Loan {
+    public constructor(reader: Reader, book: Book, loanDate: Date) {
+        super(reader, book, loanDate); 
+    }
+
+    public calculateReturnDate(): Date {
+        const returnDate = new Date(this.getLoanDate()); 
+        returnDate.setDate(returnDate.getDate() + 7);
+        return returnDate;
+    }
+
+    public message(): string {
+        return "Your loan expires in 7 days. Please return the book on time!";
+    }
+}
